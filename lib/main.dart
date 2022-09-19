@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:predict_it/screens/home_page.dart';
 
 // main function -- entry point
 void main() {
@@ -43,10 +44,7 @@ class _PredictionAppState extends State<PredictionApp> {
 
   // This will hold all window/ widgets to switch via bottom nav bar
   static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
+    HomePage(),
     Text(
       'Index 1: Market',
       style: optionStyle,
@@ -104,9 +102,6 @@ class _PredictionAppState extends State<PredictionApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('BottomNavigationBar Sample'),
-      ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
