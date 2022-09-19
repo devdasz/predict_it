@@ -1,25 +1,9 @@
 import 'package:flutter/material.dart';
 
-// main function -- entry point
-void main() {
-  runApp(const MainApp());
-}
+// void main() {
+//   runApp(const MainApp());
+// }
 
-// Main app-- Parent of all
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "Prediction App",
-      theme: ThemeData(primaryColor: Color(0xFFE432C1)),
-      home: const PredictionApp(),
-    );
-  }
-}
-
-// As no routing implemented, this widget is same like main app
 class PredictionApp extends StatefulWidget {
   const PredictionApp({super.key});
 
@@ -28,48 +12,37 @@ class PredictionApp extends StatefulWidget {
 }
 
 class _PredictionAppState extends State<PredictionApp> {
-  // colors are defined for bottom nav bar
   final _selectedItemColor = Colors.white;
   final _unselectedItemColor = Colors.black;
-  // final _selectedBgColor = Color(0xFFE432C1);
-  // final _unselectedBgColor = Colors.white;
-
-  // state variable to hold window position
+  final _selectedBgColor = Color(0xFFE432C1);
+  final _unselectedBgColor = Colors.white;
   int _selectedIndex = 0;
-
-  // Temporary style to make maock window looking nice
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-
-  // This will hold all window/ widgets to switch via bottom nav bar
   static const List<Widget> _widgetOptions = <Widget>[
     Text(
       'Index 0: Home',
-      style: optionStyle,
     ),
     Text(
-      'Index 1: Market',
-      style: optionStyle,
+      'Index 1: Business',
     ),
     Text(
-      'Index 2: Portfolio',
-      style: optionStyle,
+      'Index 2: School',
     ),
     Text(
-      'Index 3: Profiile',
-      style: optionStyle,
+      'Index 3: School',
     ),
   ];
 
-// ontap function to switch screens
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
   }
 
-//Custom boxdecoration to apply on selected button/icon only to make the
-// gradient background
+  Color _getBgColor(int index) =>
+      _selectedIndex == index ? _selectedBgColor : _unselectedBgColor;
+
+  Color _getItemColor(int index) =>
+      _selectedIndex == index ? _selectedItemColor : _unselectedItemColor;
   BoxDecoration? _getBoxDecoration(int index) => _selectedIndex == index
       ? BoxDecoration(
           gradient: LinearGradient(
@@ -79,10 +52,7 @@ class _PredictionAppState extends State<PredictionApp> {
           ),
           borderRadius: BorderRadius.circular(12))
       : null;
-
-// Custom buildicon function to change the background of icon of
-// bottom nav bar
-  Widget _buildIcon(ImageIcon iconData, int index) => Container(
+  Widget _buildIcon(ImageIcon iconData, String text, int index) => Container(
         width: double.infinity,
         height: kBottomNavigationBarHeight,
         child: Container(
@@ -100,37 +70,47 @@ class _PredictionAppState extends State<PredictionApp> {
           ),
         ),
       );
-
   @override
   Widget build(BuildContext context) {
+    // Full screen width and height
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+
+    // Height (without SafeArea)
+    var padding = MediaQuery.of(context).viewPadding;
+    double height1 = height - padding.top - padding.bottom;
+
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('BottomNavigationBar Sample'),
-      ),
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
-      ),
+      body: Text("Hi"),
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: _buildIcon(
-                ImageIcon(AssetImage("lib/assets/icons/icons8-news.png")), 0),
+                ImageIcon(AssetImage("lib/assets/icons/icons8-news.png")),
+                "home",
+                0),
             label: 'Home',
           ),
           BottomNavigationBarItem(
             icon: _buildIcon(
-                ImageIcon(AssetImage("lib/assets/icons/Markets.png")), 1),
-            label: 'Market',
+                ImageIcon(AssetImage("lib/assets/icons/Markets.png")),
+                "home",
+                1),
+            label: 'Business',
           ),
           BottomNavigationBarItem(
             icon: _buildIcon(
-                ImageIcon(AssetImage("lib/assets/icons/Portfolio.png")), 2),
-            label: 'Portfolio',
+                ImageIcon(AssetImage("lib/assets/icons/Portfolio.png")),
+                "home",
+                2),
+            label: 'School',
           ),
           BottomNavigationBarItem(
             icon: _buildIcon(
-                ImageIcon(AssetImage("lib/assets/icons/Profile.png")), 3),
-            label: 'Profile',
+                ImageIcon(AssetImage("lib/assets/icons/Profile.png")),
+                "home",
+                3),
+            label: 'School',
           )
         ],
         type: BottomNavigationBarType.fixed,
@@ -140,7 +120,7 @@ class _PredictionAppState extends State<PredictionApp> {
         selectedItemColor: _selectedItemColor,
         unselectedItemColor: _unselectedItemColor,
         backgroundColor: Colors.white,
-        elevation: 0,
+        // elevation: 0,
         // onTap: _onItemTapped,
       ),
     );
