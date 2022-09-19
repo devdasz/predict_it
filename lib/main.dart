@@ -13,7 +13,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Prediction App",
-      theme: ThemeData(primaryColor: Color(0xFFE432C1)),
+      theme: ThemeData(primaryColor: const Color(0xFFE432C1)),
       home: const PredictionApp(),
     );
   }
@@ -72,7 +72,7 @@ class _PredictionAppState extends State<PredictionApp> {
 // gradient background
   BoxDecoration? _getBoxDecoration(int index) => _selectedIndex == index
       ? BoxDecoration(
-          gradient: LinearGradient(
+          gradient: const LinearGradient(
             colors: [Color(0xfff21cc8), Color(0xfffd9feb)],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -82,12 +82,12 @@ class _PredictionAppState extends State<PredictionApp> {
 
 // Custom buildicon function to change the background of icon of
 // bottom nav bar
-  Widget _buildIcon(ImageIcon iconData, int index) => Container(
+  Widget _buildIcon(ImageIcon iconData, int index) => SizedBox(
         width: double.infinity,
         height: kBottomNavigationBarHeight,
         child: Container(
           decoration: _getBoxDecoration(index),
-          margin: EdgeInsets.all(10),
+          margin: const EdgeInsets.all(10),
           // color: _getBgColor(index),
           child: InkWell(
             child: Column(
@@ -114,22 +114,24 @@ class _PredictionAppState extends State<PredictionApp> {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: _buildIcon(
-                ImageIcon(AssetImage("lib/assets/icons/icons8-news.png")), 0),
+                const ImageIcon(AssetImage("lib/assets/icons/icons8-news.png")),
+                0),
             label: 'Home',
           ),
           BottomNavigationBarItem(
             icon: _buildIcon(
-                ImageIcon(AssetImage("lib/assets/icons/Markets.png")), 1),
+                const ImageIcon(AssetImage("lib/assets/icons/Markets.png")), 1),
             label: 'Market',
           ),
           BottomNavigationBarItem(
             icon: _buildIcon(
-                ImageIcon(AssetImage("lib/assets/icons/Portfolio.png")), 2),
+                const ImageIcon(AssetImage("lib/assets/icons/Portfolio.png")),
+                2),
             label: 'Portfolio',
           ),
           BottomNavigationBarItem(
             icon: _buildIcon(
-                ImageIcon(AssetImage("lib/assets/icons/Profile.png")), 3),
+                const ImageIcon(AssetImage("lib/assets/icons/Profile.png")), 3),
             label: 'Profile',
           )
         ],
