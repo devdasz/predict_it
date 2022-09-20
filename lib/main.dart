@@ -101,44 +101,47 @@ class _PredictionAppState extends State<PredictionApp> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: _buildIcon(
-                const ImageIcon(AssetImage("lib/assets/icons/icons8-news.png")),
-                0),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: _buildIcon(
-                const ImageIcon(AssetImage("lib/assets/icons/Markets.png")), 1),
-            label: 'Market',
-          ),
-          BottomNavigationBarItem(
-            icon: _buildIcon(
-                const ImageIcon(AssetImage("lib/assets/icons/Portfolio.png")),
-                2),
-            label: 'Portfolio',
-          ),
-          BottomNavigationBarItem(
-            icon: _buildIcon(
-                const ImageIcon(AssetImage("lib/assets/icons/Profile.png")), 3),
-            label: 'Profile',
-          )
-        ],
-        type: BottomNavigationBarType.fixed,
-        currentIndex: _selectedIndex,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        selectedItemColor: _selectedItemColor,
-        unselectedItemColor: _unselectedItemColor,
-        backgroundColor: Colors.white,
-        elevation: 0,
-        // onTap: _onItemTapped,
+    return SafeArea(
+      child: Scaffold(
+        body: _widgetOptions.elementAt(_selectedIndex),
+        bottomNavigationBar: BottomNavigationBar(
+          items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: _buildIcon(
+                  const ImageIcon(
+                      AssetImage("lib/assets/icons/icons8-news.png")),
+                  0),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: _buildIcon(
+                  const ImageIcon(AssetImage("lib/assets/icons/Markets.png")),
+                  1),
+              label: 'Market',
+            ),
+            BottomNavigationBarItem(
+              icon: _buildIcon(
+                  const ImageIcon(AssetImage("lib/assets/icons/Portfolio.png")),
+                  2),
+              label: 'Portfolio',
+            ),
+            BottomNavigationBarItem(
+              icon: _buildIcon(
+                  const ImageIcon(AssetImage("lib/assets/icons/Profile.png")),
+                  3),
+              label: 'Profile',
+            )
+          ],
+          type: BottomNavigationBarType.fixed,
+          currentIndex: _selectedIndex,
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
+          selectedItemColor: _selectedItemColor,
+          unselectedItemColor: _unselectedItemColor,
+          backgroundColor: Colors.white,
+          elevation: 0,
+          // onTap: _onItemTapped,
+        ),
       ),
     );
   }

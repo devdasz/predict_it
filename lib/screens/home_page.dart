@@ -1,14 +1,18 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/material.dart';
+import 'action_bar.dart';
+import 'image_header.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
-
+  static const height = 300.0;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(child: Text("HomePage")),
+    return Column(
+      children: [
+        ImageHeader(),
+        // Actionbar
+        ActionBar(),
+      ],
     );
   }
 }
