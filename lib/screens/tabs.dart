@@ -132,6 +132,38 @@ class Tabs extends StatelessWidget {
                           ),
                         ],
                       ),
+                      Expanded(
+                          child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: TextField(
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: 'Add comment...',
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(2.0),
+                              child: Text("😍"),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(2.0),
+                              child: Text("😍"),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(2.0),
+                              child: Icon(
+                                Icons.add_circle_outline,
+                                size: 16,
+                              ),
+                            )
+                          ],
+                        ),
+                      ))
                     ],
                   ),
                 ),
