@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'action_bar.dart';
 import 'image_header.dart';
+import 'tabs.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -12,6 +13,9 @@ class HomePage extends StatelessWidget {
         ImageHeader(),
         // Actionbar
         ActionBar(),
+        Expanded(
+          child: Tabs(),
+        ),
       ],
     );
   }
